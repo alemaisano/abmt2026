@@ -14,7 +14,7 @@ public class RunSimulationObjects {
     //Scenario: Siouxfalls example project
             
         //Load the config object
-        String configPath = "/home/kaghog/git/abmt-2026/abmt2026/scenarios/SiouxFalls/config_default.xml";//"..\\scenarios\\SiouxFalls\\config_default.xml"; //you can also directly add the config path here
+        String configPath = "..\\scenarios\\SiouxFalls\\config_default.xml"; //you can also directly add the config path here
         Config config = ConfigUtils.loadConfig(configPath);
         
         //We can access and change the config file directly here, change the iteration number or even the output directory
@@ -26,15 +26,11 @@ public class RunSimulationObjects {
 
         
         System.out.println("the new last iteration setting is: " + config.controller().getLastIteration());
-        config.controller().setOutputDirectory("output2");
-        Scenario scenario = ScenarioUtils.loadScenario(config); 
-        Controler controller = new Controler(scenario);
-        controller.run();
+        
         /*
         config.controller().setOutputDirectory("output2");
 
         //ToDo: how can we change the flow capacity?
-        
         
         //ToDo: Load the scenario object
 
