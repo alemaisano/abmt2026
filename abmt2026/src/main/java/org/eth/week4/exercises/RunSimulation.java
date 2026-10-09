@@ -11,25 +11,29 @@ import org.matsim.core.scenario.ScenarioUtils;
 public class RunSimulation {
     public static void main (String[] args) {
   
-//Scenario: Siouxfalls example project
-    	
-        //Load the config object
+// Scenario: Sioux Falls example project
+
+        // Load the config object
         String configPath = args[0];
         Config config = ConfigUtils.loadConfig(configPath);
 
-        //set config options like output directory to customise the simulation
+        // Set config options
+        config.controller().setOutputDirectory("output_week4");
 
-        //set the last iteration to 0 so that we only run one iteration
+        // Run only iteration 0
+        config.controller().setLastIteration(0);
 
+        // Load the scenario object
+        Scenario scenario = ScenarioUtils.loadScenario(config);
 
-        //Load the scenario object
-              
-        //Create the controller object
-        
-        //add controller listener
-        //controler.addControllerListener(new MyControlerListener(scenario));
-        
-        //controler.run();
+        // Create the controller object
+        Controler controler = new Controler(scenario);
+
+        // Add controller listener
+        controler.addControllerListener(new MyControlerListener(scenario));
+
+        // Run the simulation
+        controler.run();
     }
 }
 
