@@ -63,6 +63,4 @@ public class CalculateAverageTravelTime implements PersonDepartureEventHandler, 
 		return avgTimePerMode;
 		}
 
-
-
 }

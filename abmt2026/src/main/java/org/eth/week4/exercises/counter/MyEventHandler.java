@@ -5,6 +5,8 @@ import org.matsim.api.core.v01.events.LinkLeaveEvent;
 import org.matsim.api.core.v01.events.handler.LinkEnterEventHandler;
 import org.matsim.api.core.v01.events.handler.LinkLeaveEventHandler;
 
+//public class MyEventHandler implements ActivityStartEvenHanler
+
 //we want to analyse link enter and link leave events
 public class MyEventHandler implements LinkEnterEventHandler, LinkLeaveEventHandler{
 
