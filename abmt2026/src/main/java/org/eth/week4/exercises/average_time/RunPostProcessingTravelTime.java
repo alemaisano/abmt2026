@@ -12,15 +12,20 @@ public class RunPostProcessingTravelTime {
 		
 		EventsManager eventsManager = EventsUtils.createEventsManager();
 		// create an object for the EventHandler called CalculateAverageTravelTime and add to the event manager
-		
-				
+		CalculateAverageTravelTime myEventHandler = new CalculateAverageTravelTime();
+		eventsManager.addHandler(myEventHandler);
+						
 		// read the events from our events file
-
-		//print out the results of the average travel time and the average travel time per trip leg
+		MatsimEventsReader matsimEventsReader = new MatsimEventsReader(eventsManager);
 		
+		//print out the results of the average travel time and the average travel time per trip leg
+		System.out.println("This is my total average travel time: " + myEventHandler.getAverageTravelTime());
+
+		for (Entry<String, Double> entry : myEventHandler.getAverageTravelTimePerMode().entrySet()){
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+	}
 		
 		
 				
 	}
-
-}

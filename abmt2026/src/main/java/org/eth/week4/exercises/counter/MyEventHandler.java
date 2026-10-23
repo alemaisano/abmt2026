@@ -1,9 +1,12 @@
 package org.eth.week4.exercises.counter;
 
+import org.matsim.api.core.v01.events.ActivityStartEvent;
 import org.matsim.api.core.v01.events.LinkEnterEvent;
 import org.matsim.api.core.v01.events.LinkLeaveEvent;
+import org.matsim.api.core.v01.events.handler.ActivityStartEventHandler;
 import org.matsim.api.core.v01.events.handler.LinkEnterEventHandler;
 import org.matsim.api.core.v01.events.handler.LinkLeaveEventHandler;
+
 
 //we want to analyse link enter and link leave events
 public class MyEventHandler implements LinkEnterEventHandler, LinkLeaveEventHandler{

@@ -18,18 +18,22 @@ public class RunSimulation {
         Config config = ConfigUtils.loadConfig(configPath);
 
         //set config options like output directory to customise the simulation
+        config.controller().setOutputDirectory("output_week4");
 
         //set the last iteration to 0 so that we only run one iteration
+        config.controller().setLastIteration(0);
 
 
         //Load the scenario object
+        Scenario scenario = ScenarioUtils.loadScenario(config);
               
         //Create the controller object
+        Controler controler = new Controler(scenario);
         
         //add controller listener
-        //controler.addControllerListener(new MyControlerListener(scenario));
+        controler.addControllerListener(new MyControlerListener(scenario));
         
-        //controler.run();
+        controler.run();
     }
 }
 
