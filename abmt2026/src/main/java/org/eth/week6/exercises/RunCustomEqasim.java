@@ -18,7 +18,7 @@ public class RunCustomEqasim {
 	
 public static void main(String[] args)  {
 		
-		String configPath = args[0]; //use the sioux fall scenario config_default_eqasim.xml file
+		String configPath = "scenarios/SiouxFalls/config_default.xml";
 		
 		//load the config file with the necessary modules (DMC module and eqasim...)
 		//Hint: Search for the EqasimConfigurator class and see what class we should load
@@ -41,7 +41,7 @@ public static void main(String[] args)  {
 
         //these are the default utility estimators already prepared for the different modes in the eqasim framework. this can also be specified in the config file
         eqasimConfig.setEstimator("walk", "WalkUtilityEstimator");
-        eqasimConfig.setEstimator("bike", "BikeUtilityEstimator");
+        eqasimConfig.setEstimator("bike", "AbmtBikeUtilityEstimator");
         eqasimConfig.setEstimator("pt", "PtUtilityEstimator");
         
       //now we change the estimator for car to the one we defined //we will use the name we will define in the mode choice module

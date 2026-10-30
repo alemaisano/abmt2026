@@ -14,6 +14,7 @@ import com.google.inject.Singleton;
 import org.eth.week6.exercises.mode_choice.costs.AbmtCarCostModel;
 import org.eth.week6.exercises.mode_choice.costs.AbmtPtCostModel;
 import org.eth.week6.exercises.mode_choice.estimators.AbmtCarUtilityEstimator;
+import org.eth.week6.exercises.mode_choice.estimators.AbmtBikeUtilityEstimator;
 import org.eth.week6.exercises.mode_choice.parameters.AbmtCostParameters;
 import org.eth.week6.exercises.mode_choice.parameters.AbmtModeParameters;
 
@@ -28,6 +29,7 @@ public class AbmtModeChoiceModule extends AbstractEqasimExtension {
         // bindUtilityEstimator is a method in AbstractEqasimExtension that make possible add
         // to a mapbinder objects of type UtilityEstimator with a specific key, in this case AbmtCarEstimator
          bindUtilityEstimator("AbmtCarUtilityEstimator").to(AbmtCarUtilityEstimator.class);
+         bindUtilityEstimator("AbmtBikeUtilityEstimator").to(AbmtBikeUtilityEstimator.class);
 
 
 

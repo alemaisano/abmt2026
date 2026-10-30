@@ -41,6 +41,10 @@ public class AbmtCarUtilityEstimator extends CarUtilityEstimator {
         return parameters.abmtCar.alpha_male + parameters.car.alpha_u;
     }
 
+    protected double estimateConstantFemale() {
+        return parameters.abmtCar.alpha_female + parameters.car.alpha_u;
+    }
+
     @Override
     protected double estimateMonetaryCostUtility(CarVariables carVariables) {
 		return costParameters.carCost_USD_km * EstimatorUtils.interaction(carVariables.euclideanDistance_km,
@@ -58,10 +62,12 @@ public class AbmtCarUtilityEstimator extends CarUtilityEstimator {
 
 	        double utility = 0.0;
 
-	        //use our constant estimator for male persons
-	        if (person.getAttributes().getAttribute("sex").equals("m")) {
-
+	        // Use the custom constants for male and female persons.
+	        Object sex = person.getAttributes().getAttribute("sex");
+	        if ("m".equals(sex)) {
 	            utility += estimateConstantMale();
+	        } else if ("f".equals(sex)) {
+	            utility += estimateConstantFemale();
 	        } else {
 	            utility += estimateConstantUtility();
 	        }

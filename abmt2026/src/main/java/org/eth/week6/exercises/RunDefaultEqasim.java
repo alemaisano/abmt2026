@@ -1,5 +1,7 @@
 package org.eth.week6.exercises;
 
+import java.nio.file.Path;
+
 import org.eqasim.core.components.config.EqasimConfigGroup;
 import org.eqasim.core.simulation.mode_choice.EqasimModeChoiceModule;
 import org.eqasim.core.simulation.mode_choice.parameters.ModeParameters;
@@ -18,8 +20,8 @@ public class RunDefaultEqasim {
 	
 	public static void main(String[] args)  {
 		
-		String configPath = args[0]; //use the sioux fall scenario config_default_eqasim.xml file
-		
+		// Resolve this path from the Maven project directory.
+		String configPath = "scenarios/SiouxFalls/config_default.xml";
 		//load the config file with the necessary modules (DMC module and eqasim...)
 		//Hint: Search for the EqasimConfigurator class and see what class we should load
 		 //First load the Siouxfalls scenario
@@ -28,9 +30,10 @@ public class RunDefaultEqasim {
         
 
         config.controller().setLastIteration(2);
-        
-        
-        //config.controler().setOutputDirectory("output3110");
+
+        Path outputDirectory = Path.of("output_week6").toAbsolutePath().normalize();
+        config.controller().setOutputDirectory(outputDirectory.toString());
+        System.out.println("Simulation output will be written to: " + outputDirectory);
         config.controller().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
 
 
